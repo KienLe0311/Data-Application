@@ -84,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean validateInput(String username, String password) {
         if (username.isEmpty() || password.isEmpty()) {
-            edUser.setError(username.isEmpty() ? "Username is required" : null);
-            edPass.setError(password.isEmpty() ? "Password is required" : null);
+            edUser.setError(username.isEmpty() ? "Tên đăng nhập là bắt buộc" : null);
+            edPass.setError(password.isEmpty() ? "Mật khẩu là bắt buộc" : null);
             return false;
         }
         return true;
