@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -32,12 +33,17 @@ public class MainActivity extends AppCompatActivity {
             String password = edPass.getText().toString().trim();
 
             if (validateInput(username, password)) {
-                savingPreferences();
-                Intent mh = new Intent(MainActivity.this, LoginSuccessActivity.class);
-                mh.putExtra("user", username);
-                startActivity(mh);
+                try {
+                    savingPreferences();
+                    Intent mh = new Intent(MainActivity.this, LoginSuccessActivity.class);
+                    mh.putExtra("user", username);
+                    startActivity(mh);
+                } catch (Exception e) {
+                    Log.e("MainActivity", "Error starting LoginSuccessActivity", e);
+                }
             }
         });
+
     }
 
     @Override
